@@ -49,10 +49,15 @@ void tworzenieTaliKart(std::vector<pojedynczaKarta>& taliaKart, int ileKolorow) 
 }
 
 void tasowanieKart(std::vector<pojedynczaKarta>& taliaKart, int ileRazy) {
-	for (int i{ 0 }; i < ileRazy; i++) {
-		int los_1 = std::rand() % taliaKart.size();
-		int los_2 = std::rand() % taliaKart.size();
-		std::swap(taliaKart[los_1], taliaKart[los_2]);
+	try {
+		for (int i{ 0 }; i < ileRazy; i++) {
+			int los_1 = std::rand() % taliaKart.size();
+			int los_2 = std::rand() % taliaKart.size();
+			std::swap(taliaKart.at(los_1), taliaKart.at(los_2));
+		}
+	}
+	catch (const std::out_of_range blod) {
+		std::cerr << "Los poza indeksem " << blod.what() << "\n";
 	}
 }
 
