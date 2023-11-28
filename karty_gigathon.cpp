@@ -1,4 +1,5 @@
-﻿#include <iostream>
+﻿//Dominik Łempicki (Kapitan)
+#include <iostream>
 #include <vector>
 #include <string>
 #include <stdexcept>
@@ -21,6 +22,7 @@ void wyswietlanieKart(const std::vector<pojedynczaKarta>& taliaKart);
 int main() {
 	setlocale(LC_CTYPE, "Polish");
 
+
 	std::vector<pojedynczaKarta> taliaKart;
 
 	tworzenieTaliKart(taliaKart, 4);
@@ -38,8 +40,8 @@ int main() {
 
 
 void tworzenieTaliKart(std::vector<pojedynczaKarta>& taliaKart, const int ileKolorow) {
-	int kolor{ 1 };
 	for (int i{ 2 }; i <= (52 + 4) / 4; i++) {
+		int kolor{ 1 };
 		for (int j{ 1 }; j <= 4; j++) {
 			taliaKart.push_back({ static_cast<short>(j),static_cast<short>(i) });
 			kolor < ileKolorow ? kolor++ : kolor = 1;
@@ -68,9 +70,9 @@ void wyswietlanieKart(const std::vector<pojedynczaKarta>& taliaKart) {
 	const string kolory[] = { "pik","trefl","karo","kier" };
 	const std::string obrazkowe[] = { "Walet","Dama","Król","As" };
 
-	string wyrendorowaneKarty{ " " };
 
 	for (auto karta : taliaKart) {
+		
 		if (karta.kolor == 3 || karta.kolor == 4) cout << "\033[91m";
 		else cout << "\033[97m";
 		cout << " ------\n|";
@@ -82,10 +84,11 @@ void wyswietlanieKart(const std::vector<pojedynczaKarta>& taliaKart) {
 			cout << obrazkowe[(int)karta.wartosc - 11];
 			wyrownaj(karta.wartosc, obrazkowe[(int)karta.wartosc - 11].length());
 		}
-		std::cout << "| \n|      |\n|" << kolory[(int)--karta.kolor];
-		wyrownaj(10, kolory[(int)karta.kolor].length());
+		std::cout << "| \n|      |\n|" << kolory[(int)karta.kolor-1];
+		wyrownaj(10, kolory[(int)karta.kolor-1].length());
 		cout << "|\n ------\n\033[0m";
 		//	Sleep(1000);
+		
 	}
 }
 
