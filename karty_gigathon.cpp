@@ -67,6 +67,9 @@ void tasowanieKart(std::vector<pojedynczaKarta>& taliaKart,const int ileRazy) {
 void wyswietlanieKart(const std::vector<pojedynczaKarta>& taliaKart) {
 	const string kolory[] = { "pik","trefl","karo","kier" };
 	const std::string obrazkowe[] = { "Walet","Dama","Król","As" };
+
+	string wyrendorowaneKarty{ " " };
+
 	for (auto karta : taliaKart) {
 		if (karta.kolor == 3 || karta.kolor == 4) cout << "\033[91m";
 		else cout << "\033[97m";
